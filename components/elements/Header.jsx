@@ -86,8 +86,8 @@ const Header = ({ open, setOpen }) => {
         <NavLink link="production" title="Production" />
         <NavLink link="contact" title="Contact" />
       </ul>
-      <div onClick={() => setOpen(true)}>
-        <AiOutlineMenu className="text-3xl cursor-pointer text-gray-50 md:hidden" />
+      <div className="md:hidden" onClick={() => setOpen(true)}>
+        <AiOutlineMenu className="text-3xl cursor-pointer text-gray-50 " />
       </div>
     </div>
   );

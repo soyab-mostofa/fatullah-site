@@ -17,13 +17,10 @@ const HeroContainer = styled.section`
 const HeroSection = () => {
   return (
     <HeroContainer background={heroBg.src}>
-      <div className="flex flex-col items-center justify-center gap-5 ">
-        <motion.h2
-          animate={{ y: -50 }}
-          className="text-3xl font-bold text-center text-gray-50"
-        >
+      <div className="flex flex-col items-center justify-center gap-16">
+        <h2 className="text-3xl font-bold text-center text-gray-50">
           Largest Exporter of <span className="block"> Textile Products</span>
-        </motion.h2>
+        </h2>
         <div className="space-x-3">
           <button className="px-5 py-2 text-gray-900 border bg-slate-50 border-gray-50">
             In details

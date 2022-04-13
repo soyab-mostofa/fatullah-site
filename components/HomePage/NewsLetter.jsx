@@ -8,7 +8,7 @@ import {
 const NewsLetter = () => {
   return (
     <div className="bg-blue-primary">
-      <div className="container px-2 py-10 mx-auto space-y-3">
+      <div className="container px-2 py-10 mx-auto space-y-5">
         <div className="flex items-center justify-center gap-3">
           <h1 className=" text-gray-50">Sign up for latest updates</h1>
           <div className="relative overflow-hidden rounded-lg">
@@ -31,7 +31,7 @@ const NewsLetter = () => {
           <FaLinkedinIn />
         </div>
 
-        <div className="flex flex-col items-center justify-center pt-10 space-y-3">
+        <div className="flex flex-col items-center justify-center pt-10 space-y-5">
           <h3 className="text-2xl font-bold text-center text-gray-50">
             Lets get your work done.
           </h3>
