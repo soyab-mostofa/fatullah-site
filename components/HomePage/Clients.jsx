@@ -29,7 +29,7 @@ const Clients = () => {
         <h3 className="text-2xl font-bold text-center">Our Clients</h3>
         <CgShapeZigzag className="mx-auto mb-5 -mt-3 text-5xl" />
       </Fade>
-      <div className="flex flex-col items-center justify-around gap-3 md:flex-row">
+      <div className="flex flex-col items-center justify-around max-w-5xl gap-3 mx-auto md:flex-row">
         {renderedClients}
       </div>
     </div>

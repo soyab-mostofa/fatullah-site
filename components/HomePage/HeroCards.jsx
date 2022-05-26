@@ -50,8 +50,8 @@ const renderedCards = cardDetails.map((card, index) => {
 
 const HeroCards = () => {
   return (
-    <div className="container px-5 mx-auto">
-      <div className="px-3 -mt-10 space-y-5 md:grid md:space-y-0 md:grid-cols-3 md:gap-3">
+    <div className="container max-w-5xl px-5 mx-auto">
+      <div className="max-w-5xl mx-auto -mt-10 space-y-5 md:grid md:space-y-0 md:grid-cols-3 md:gap-3">
         {renderedCards}
       </div>
       <Fade>
@@ -62,6 +62,7 @@ const HeroCards = () => {
               objectFit="cover"
               layout="fill"
               all="machine"
+              alt="machine"
             />
           </div>
           <div className="md:mt-10">

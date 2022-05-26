@@ -7,7 +7,7 @@ import bdMap from "../../public/assets/bdmap.png";
 const OfficeContacts = () => {
   return (
     <div className="bg-blue-primary/10">
-      <div className="container px-2 py-10 mx-auto sm:flex ">
+      <div className="container max-w-5xl px-2 py-10 mx-auto sm:flex ">
         <div>
           <div>
             <h3 className="text-2xl font-bold ">Office Contacts</h3>

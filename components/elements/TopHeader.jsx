@@ -6,22 +6,28 @@ import {
   FaTwitter,
 } from "react-icons/fa";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const TopHeader = () => {
+  const { asPath } = useRouter();
   return (
-    <div className="flex justify-between">
-      <div className="flex gap-3 mb-3 text-gray-50">
+    <div
+      className={`flex justify-between ${
+        asPath === "/" ? "text-gray-50" : ""
+      } pt-3`}
+    >
+      <div className="flex gap-3 mb-3 ">
         <FaFacebook />
         <FaTwitter />
         <FaInstagram />
         <FaLinkedinIn />
       </div>
       <div className="space-x-3">
-        <Link href="login">
-          <a className="text-gray-50">Login</a>
+        <Link href="#">
+          <a>Login</a>
         </Link>
-        <Link href="signup">
-          <a className="text-gray-50">Sign up</a>
+        <Link href="#">
+          <a>Sign up</a>
         </Link>
       </div>
     </div>

@@ -8,38 +8,33 @@ import {
 import { AnimatePresence, motion } from "framer-motion";
 
 const navItems = [
-  { title: "About" },
+  {
+    title: "About",
+    link: "/about",
+    sub: [
+      { title: "Journey", link: "/about/journey" },
+      { title: "History", link: "/about/history" },
+      { title: "Leadership", link: "/about/leadership" },
+      { title: "Awards", link: "/about/awards" },
+      { title: "Impacts", link: "/about/impacts" },
+    ],
+  },
   {
     title: "Industries",
-    sub: [
-      "Siraj Printing Works",
-      "Begum Rokeya Rice Mils",
-      "Fatullah Dyeing & Calendaring Mills Ltd.",
-      "Fatullah Knitting Mills Ltd",
-      "Fatullah Fabrics Ltd",
-      "Fatullah Enterprise Ltd",
-      "Fatullah Apparels",
-      "Fatullah Cotton & Weaving Industries Ltd",
-      "Fatullah Woven Labels Ltd",
-    ],
+    link: "industries",
   },
-  { title: "CSR" },
+  { title: "CSR", link: "csr" },
   {
     title: "Production",
-    sub: [
-      "Woven",
-      "Knitting",
-      "Knit Dying",
-      "Knit Garments",
-      "Knit Screen Printing",
-    ],
+    link: "production",
   },
-  { title: "Contact" },
+
+  { title: "Contact", link: "contact" },
 ];
 
-const NavLink = ({ title, sub }) => {
+const NavLink = ({ title, sub, link }) => {
   const [openSub, setOpenSub] = React.useState(false);
-
+  const [path, setPath] = React.useState(null);
   const handleOpen = () => {
     if (openSub) {
       setOpenSub(false);
@@ -49,44 +44,55 @@ const NavLink = ({ title, sub }) => {
   };
 
   return (
-    <Link href="#">
-      <div className="mb-3">
-        <div
-          onClick={handleOpen}
-          className="flex items-center mb-3 cursor-pointer"
-        >
+    <div className="mb-3">
+      <div className="flex items-center mb-3 cursor-pointer">
+        <Link href={link} passHref>
           <p className="p-2 text-xl text-gray-50">{title}</p>
-          {sub !== undefined &&
-            (openSub ? (
-              <AiOutlineUp className="text-xl text-gray-50" />
-            ) : (
-              <AiOutlineDown className="text-xl text-gray-50" />
-            ))}
-        </div>
-        <AnimatePresence>
-          {openSub &&
-            sub &&
-            sub.map((item, i) => {
-              return (
+        </Link>
+        {sub !== undefined &&
+          (openSub ? (
+            <AiOutlineUp
+              onClick={handleOpen}
+              className="text-xl text-gray-50"
+            />
+          ) : (
+            <AiOutlineDown
+              onClick={handleOpen}
+              className="text-xl text-gray-50"
+            />
+          ))}
+      </div>
+      <AnimatePresence>
+        {openSub &&
+          sub &&
+          sub.map((item, i) => {
+            return (
+              <Link href={item.link} key={i} passHref>
                 <motion.div
-                  key={i}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="text-gray-50"
+                  className="cursor-pointer text-gray-50"
                 >
-                  {item}
+                  {item.title}
                 </motion.div>
-              );
-            })}
-        </AnimatePresence>
-      </div>
-    </Link>
+              </Link>
+            );
+          })}
+      </AnimatePresence>
+    </div>
   );
 };
 
 const renderedLinks = navItems.map((item, i) => {
-  return <NavLink key={i} title={item.title} sub={item.sub && item.sub} />;
+  return (
+    <NavLink
+      key={i}
+      link={item.link}
+      title={item.title}
+      sub={item.sub && item.sub}
+    />
+  );
 });
 
 const menuVariants = {
@@ -115,7 +121,9 @@ const MobileNav = ({ open, setOpen }) => {
           className={` fixed top-0 right-0 z-50 w-80 h-screen px-10 pt-10 space-y-3 bg-blue-primary`}
         >
           <div onClick={() => setOpen(false)}>
-            <AiOutlineCloseCircle className="mb-10 text-5xl cursor-pointer text-gray-50" />
+            <AiOutlineCloseCircle
+              className={`mb-10 text-5xl cursor-pointer text-neutral-50 `}
+            />
           </div>
           {renderedLinks}
         </motion.div>

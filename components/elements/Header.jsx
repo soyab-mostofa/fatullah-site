@@ -2,94 +2,99 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Logo from "../../public/assets/logo.png";
+import tw from "tailwind-styled-components";
 import { motion } from "framer-motion";
 import { AiOutlineMenu } from "react-icons/ai";
+import { useRouter } from "next/router";
+import Show from "./Show";
 
-const NavDropdown = ({ link }) => {
-  const items = {
-    industries: [
-      "Siraj Printing Works",
-      "Begum Rokeya Rice Mils",
-      "Fatullah Dyeing & Calendaring Mills Ltd.",
-      "Fatullah Knitting Mills Ltd",
-      "Fatullah Fabrics Ltd",
-      "Fatullah Enterprise Ltd",
-      "Fatullah Apparels",
-      "Fatullah Cotton & Weaving Industries Ltd",
-      "Fatullah Woven Labels Ltd",
+const NavContainer = tw.div`relative py-3 z-20 flex justify-between items-center px-4 `;
+
+const A = tw.a`text-neutral-50 font-semibold px-2 py-1 text-center hover:bg-neutral-50 hover:text-neutral-900 transition-all `;
+
+const navItems = [
+  {
+    title: "About",
+    link: "/about",
+    sub: [
+      { title: "Journey", link: "/about/journey" },
+      { title: "History", link: "/about/history" },
+      { title: "Leadership", link: "/about/leadership" },
+      { title: "Awards", link: "/about/awards" },
+      { title: "Impacts", link: "/about/impacts" },
     ],
-    production: [
-      "Woven",
-      "Knitting",
-      "Knit Dying",
-      "Knit Garments",
-      "Knit Screen Printing",
-    ],
-  };
+  },
+  {
+    title: "Industries",
+    link: "/industries",
+  },
+  {
+    title: "CSR",
+    link: "/csr",
+  },
+  {
+    title: "Contact",
+    link: "/contact",
+  },
+];
 
-  let links = items[link];
+const NavItem = ({ item, key }) => {
+  const { asPath } = useRouter();
+  const B = tw.a` font-semibold px-2 py-1 text-center  ${(p) =>
+    p.$light ? "text-neutral-50" : "text-neutral-900"} `;
 
+  const light = asPath === "/" ? true : false;
+
+  const [show, setShow] = React.useState(false);
   return (
-    <motion.ul
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      className={`py-5 top-6 px-2 w-48 -left-10 bg-blue-primary text-gray-50 ${
-        !links ? "hidden" : "absolute"
-      }`}
-    >
-      {links?.map((item, i) => {
-        return (
-          <li
-            key={i}
-            className="px-3 py-2 text-sm transition-all cursor-pointer hover:bg-gray-50 hover:text-blue-primary"
-          >
-            {item}
-          </li>
-        );
-      })}
-    </motion.ul>
-  );
-};
-
-const NavLink = ({ link }) => {
-  const [menuOpen, setOpenMenu] = React.useState(false);
-  return (
-    <li
+    <div
+      key={key}
       className="relative"
-      onMouseEnter={() => setOpenMenu(true)}
-      onMouseLeave={() => setOpenMenu(false)}
+      onMouseEnter={() => setShow(true)}
+      onMouseLeave={() => setShow(false)}
     >
-      <Link href={link}>
-        <a className="uppercase text-gray-50">{link}</a>
+      <Link href={item.link} passHref>
+        <B $light={light}>{item.title}</B>
       </Link>
-      {menuOpen && <NavDropdown link={link} />}
-    </li>
-  );
-};
-
-const Header = ({ open, setOpen }) => {
-  return (
-    <div className="sticky flex items-center justify-between py-1 border-y border-gray-50">
-      <div className="flex items-center gap-3 font-bold uppercase text-gray-50">
-        <Image
-          className="bg-white"
-          height={Logo.height * 0.8}
-          width={Logo.width * 0.8}
-          src={Logo}
-        />
-        Fatullah Fabrics
-      </div>
-      <ul className="hidden gap-3 md:flex">
-        <NavLink link="about" title="About" />
-        <NavLink link="industries" title="Industries" />
-        <NavLink link="csr" title="Csr" />
-        <NavLink link="production" title="Production" />
-        <NavLink link="contact" title="Contact" />
-      </ul>
-      <div className="md:hidden" onClick={() => setOpen(true)}>
-        <AiOutlineMenu className="text-3xl cursor-pointer text-gray-50 " />
+      <div className="absolute z-50 flex flex-col -right-4 bg-blue-primary">
+        <Show show={show}>
+          {item.sub &&
+            item.sub.map((it, i) => {
+              return (
+                <Link key={i} href={it.link} passHref>
+                  <A>{it.title}</A>
+                </Link>
+              );
+            })}
+        </Show>
       </div>
     </div>
+  );
+};
+
+const Header = ({ setOpen }) => {
+  const { asPath } = useRouter();
+
+  const light = asPath === "/" ? true : false;
+
+  return (
+    <NavContainer>
+      <Link href="/" passHref>
+        <Image src={Logo} alt="logo" className="cursor-pointer bg-neutral-50" />
+      </Link>
+      <div className="hidden space-x-3 md:flex">
+        {navItems.map((item, i) => (
+          <NavItem item={item} key={i} />
+        ))}
+      </div>
+      <div
+        className={`text-3xl cursor-pointer text-neutral-50 ${
+          light ? "text-neutral-50" : "text-neutral-900"
+        }`}
+      >
+        <AiOutlineMenu className="md:hidden" onClick={() => setOpen(true)} />
+      </div>
+    </NavContainer>
   );
 };
 

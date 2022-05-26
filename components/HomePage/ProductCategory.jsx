@@ -68,7 +68,7 @@ const renderedData = numberData.map((number, i) => {
 
 const ProductCategory = () => {
   return (
-    <div className="container py-10 mx-auto">
+    <div className="container max-w-5xl py-10 mx-auto">
       <Fade up>
         <h3 className="text-2xl font-bold text-center">Product categories</h3>
         <CgShapeZigzag className="mx-auto mb-5 -mt-3 text-5xl" />
@@ -84,7 +84,7 @@ const ProductCategory = () => {
 
       {/* numbered data */}
 
-      <div className="grid grid-cols-2 gap-2 px-2 my-16 md:flex">
+      <div className="grid max-w-5xl grid-cols-2 gap-2 px-2 mx-auto my-16 md:flex">
         {renderedData}
       </div>
     </div>
