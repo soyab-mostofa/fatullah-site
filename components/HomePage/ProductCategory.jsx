@@ -1,41 +1,37 @@
-import React from "react";
-import jeans from "../../public/assets/jeans.png";
-import denim from "../../public/assets/denim.png";
-import hometex from "../../public/assets/hometex.png";
-import printedfab from "../../public/assets/Printed-Fabrics.png";
-import shirtFab from "../../public/assets/Shirting-Facrics.png";
-import yarn from "../../public/assets/yarn.png";
-import imgYarn from "../../public/assets/imgYarn.png";
-import imgFab from "../../public/assets/imgfab.png";
-import imgDie from "../../public/assets/imgdie.png";
-import imgCloths from "../../public/assets/imgCloths.png";
-import { CgShapeZigzag } from "react-icons/cg";
-import Image from "next/image";
-import Link from "next/link";
-import CardCounter from "../elements/CardCounter";
-import { Fade } from "react-reveal";
+import React from 'react';
+import { CgShapeZigzag } from 'react-icons/cg';
+import Image from 'next/image';
+import Link from 'next/link';
+import CardCounter from '../elements/CardCounter';
+import { Fade } from 'react-reveal';
 
 const numberData = [
-  { number: 37500, title: "Tons of yarn", image: imgYarn },
-  { number: 9000, title: "Tons of dyed fabric", image: imgDie },
-  { number: 17000, title: "Tons of fabrics", image: imgFab },
-  { number: 14500, title: "Tons ready-made cloths", image: imgCloths },
+  { number: 37500, title: 'Tons of yarn', image: imgYarn },
+  { number: 9000, title: 'Tons of dyed fabric', image: imgDie },
+  { number: 17000, title: 'Tons of fabrics', image: imgFab },
+  { number: 14500, title: 'Tons ready-made cloths', image: imgCloths },
 ];
 
-const categoryContent = [
-  { image: jeans, title: "Jeans" },
-  { image: denim, title: "Denim" },
-  { image: shirtFab, title: "Shirting Fabrics" },
-  { image: printedfab, title: "Printed Fabrics" },
-  { image: hometex, title: "Home Textile" },
-  { image: yarn, title: "Yarn" },
+const ProductionContents = [
+  { image: jeans, title: 'Woven Dyeing', capacity: 150000, unit: 'yards' },
+  { image: denim, title: 'Knitting', capacity: 6 },
+  { image: shirtFab, title: 'Shirting Fabrics' },
+  { image: printedfab, title: 'Printed Fabrics' },
+  { image: hometex, title: 'Home Textile' },
+  { image: yarn, title: 'Yarn' },
 ];
 
 const renderedCards = categoryContent.map((card, i) => {
   return (
     <Fade up key={i}>
-      <div className="relative mx-auto w-80 h-52">
-        <Image src={card.image} layout="fill" objectFit="cover" />
+      <div className="relative w-80 h-52">
+        <Image
+          alt="product"
+          placeholder="blur"
+          src={card.image}
+          layout="fill"
+          objectFit="cover"
+        />
         <p className="absolute text-lg font-semibold text-gray-50 bottom-16 left-3">
           {card.title}
         </p>
@@ -73,9 +69,7 @@ const ProductCategory = () => {
         <h3 className="text-2xl font-bold text-center">Product categories</h3>
         <CgShapeZigzag className="mx-auto mb-5 -mt-3 text-5xl" />
       </Fade>
-      <div className="flex flex-wrap justify-center gap-3 mx-auto max-w-7xl">
-        {renderedCards}
-      </div>
+      <div className="">{renderedCards}</div>
       <div className="mx-auto mt-5 transition-none border-2 rounded-lg cursor-pointer max-w-fit border-blue-primary hover:bg-blue-primary ">
         <p className="px-3 py-1 transition-all text-blue-primary hover:text-gray-50">
           Download PDF

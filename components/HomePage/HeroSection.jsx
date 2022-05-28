@@ -1,28 +1,18 @@
-import React from "react";
-import styled from "styled-components";
-import heroBg from "../../public/assets/herobg.png";
-import { motion } from "framer-motion";
-
-const HeroContainer = styled.section`
-  background-image: ${(props) => `url(${props.background})`};
-  background-size: cover;
-  margin-top: -130px;
-  padding-top: 130px;
-  height: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+import React from 'react';
+import styled from 'styled-components';
+import heroBg from '../../public/assets/hero-bg.jpg';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const HeroSection = () => {
   return (
-    <HeroContainer background={heroBg.src}>
+    <div className="relative h-[700px] -mt-36">
       <div className="flex flex-col items-center justify-center gap-16">
-        <h2 className="text-3xl font-bold text-center text-gray-50">
+        <h2 className="z-10 mt-48 text-3xl font-bold text-center text-gray-50">
           Welcome to Fatullah Fabrics Limited. A complete solution of Knit and
           Woven Fabrics in Bangladesh.
         </h2>
-        <div className="space-x-3">
+        <div className="z-10 space-x-3">
           <button className="px-5 py-2 text-gray-900 border bg-slate-50 border-gray-50">
             In details
           </button>
@@ -31,7 +21,17 @@ const HeroSection = () => {
           </button>
         </div>
       </div>
-    </HeroContainer>
+      <div className="absolute top-0 left-0 w-full h-full ">
+        <Image
+          src={heroBg}
+          layout="fill"
+          objectFit="cover"
+          placeholder="blur"
+          alt="hero "
+        />
+        <div className="absolute w-full h-full bg-gradient-to-tr from-blue-primary/70 to-amber-400/30 filter backdrop-blur-sm" />
+      </div>
+    </div>
   );
 };
 

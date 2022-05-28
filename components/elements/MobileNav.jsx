@@ -1,35 +1,35 @@
-import Link from "next/link";
-import React from "react";
+import Link from 'next/link';
+import React from 'react';
 import {
   AiOutlineCloseCircle,
   AiOutlineDown,
   AiOutlineUp,
-} from "react-icons/ai";
-import { AnimatePresence, motion } from "framer-motion";
+} from 'react-icons/ai';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const navItems = [
   {
-    title: "About",
-    link: "/about",
+    title: 'About',
+    link: '/about',
     sub: [
-      { title: "Journey", link: "/about/journey" },
-      { title: "History", link: "/about/history" },
-      { title: "Leadership", link: "/about/leadership" },
-      { title: "Awards", link: "/about/awards" },
-      { title: "Impacts", link: "/about/impacts" },
+      { title: 'Journey', link: '/about/journey' },
+      { title: 'History', link: '/about/history' },
+      { title: 'Leadership', link: '/about/leadership' },
+      { title: 'Awards', link: '/about/awards' },
+      { title: 'Impacts', link: '/about/impacts' },
     ],
   },
   {
-    title: "Industries",
-    link: "industries",
+    title: 'Industries',
+    link: 'industries',
   },
-  { title: "CSR", link: "csr" },
+  { title: 'CSR', link: 'csr' },
   {
-    title: "Production",
-    link: "production",
+    title: 'Production',
+    link: 'production',
   },
 
-  { title: "Contact", link: "contact" },
+  { title: 'Contact', link: 'contact' },
 ];
 
 const NavLink = ({ title, sub, link }) => {
@@ -97,15 +97,15 @@ const renderedLinks = navItems.map((item, i) => {
 
 const menuVariants = {
   hidden: {
-    x: "100vh",
+    x: '100vh',
   },
   shown: {
     x: 0,
-    transition: { type: "tween" },
+    transition: { type: 'tween' },
   },
   exit: {
-    x: "100vh",
-    transition: { type: "tween" },
+    x: '100vh',
+    transition: { type: 'tween' },
   },
 };
 
@@ -118,7 +118,7 @@ const MobileNav = ({ open, setOpen }) => {
           initial="hidden"
           animate="shown"
           exit="exit"
-          className={` fixed top-0 right-0 z-50 w-80 h-screen px-10 pt-10 space-y-3 bg-blue-primary`}
+          className={` fixed top-0 right-0 z-50 w-80 h-screen px-10 pt-10 space-y-3 bg-blue-primary/90 backdrop-blur-sm`}
         >
           <div onClick={() => setOpen(false)}>
             <AiOutlineCloseCircle
