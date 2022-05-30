@@ -25,7 +25,7 @@ const about = () => {
       </div>
       {/* cover image */}
       <Container>
-        <div className="max-w-md mx-auto my-4">
+        <div className="max-w-md mx-auto my-4 md:max-w-xl">
           <H1>{aboutData.aboutUs.heading}</H1>
           <CgShapeZigzag className="mx-auto mb-5 -mt-3 text-5xl" />
 

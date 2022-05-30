@@ -24,6 +24,7 @@ const navItems = [
     link: "/industries",
   },
   { title: "Contact", link: "/contact" },
+  { title: "Stores", link: "/location" },
 ];
 
 const NavLink = ({ title, sub, link }) => {

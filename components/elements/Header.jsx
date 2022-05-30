@@ -33,12 +33,13 @@ const navItems = [
     title: "Contact",
     link: "/contact",
   },
+  { title: "Stores", link: "/location" },
 ];
 
 const NavItem = ({ item, key }) => {
   const { asPath } = useRouter();
   const B = tw.a` font-semibold px-2 py-1 text-center tracking-wider  ${(p) =>
-    p.$light ? "text-neutral-50" : "text-neutral-900"} `;
+    p.$light ? "text-neutral-50" : "text-neutral-900 "} `;
 
   const light = asPath === "/" ? true : false;
 
