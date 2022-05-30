@@ -33,7 +33,7 @@ const OfficeContacts = () => {
         </div>
 
         <div className="mx-auto w-52 sm:w-auto h-52">
-          <Image src={bdMap} height={bdMap.height} width={bdMap.width} />
+          <Image src={bdMap} height={bdMap.height} alt="image" width={bdMap.width} />
         </div>
       </div>
     </div>
