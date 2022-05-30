@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { AiFillPhone } from "react-icons/ai";
 
@@ -160,6 +161,26 @@ const Location = () => {
         {locationData.wholeSale.map((data, i) => (
           <Card key={i} data={data} />
         ))}
+      </div>
+      <p className="mt-8 mb-4 text-xl font-bold text-center">Others </p>
+      <div className="flex flex-col my-4 space-y-4 text-center">
+        <Link passHref href="https://islampurmarket.com/">
+          <a className="text-blue-primary">
+            <span className="mr-2 font-semibold text-neutral-900">
+              {" "}
+              Ecommerce:
+            </span>
+            islampurmarket.com
+          </a>
+        </Link>
+        <Link passHref href="https://hexatechsolutions.xyz/">
+          <a className="text-blue-primary">
+            <span className="mr-2 font-semibold text-neutral-900">
+              IT Supporter:
+            </span>
+            https://hexatechsolutions.xyz/
+          </a>
+        </Link>
       </div>
     </div>
   );
