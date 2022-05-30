@@ -10,7 +10,7 @@ import Show from "./Show";
 
 const NavContainer = tw.div`relative py-3 z-20 flex justify-between items-center px-4 `;
 
-const A = tw.a`text-neutral-50 font-semibold px-2 py-1 text-center hover:bg-neutral-50 hover:text-neutral-900 transition-all `;
+const A = tw.a`text-neutral-50 font-semibold px-2 py-1.5 text-center text-sm hover:bg-neutral-50 hover:text-neutral-900 transition-all tracking-wider`;
 
 const navItems = [
   {
@@ -28,10 +28,7 @@ const navItems = [
     title: "Industries",
     link: "/industries",
   },
-  {
-    title: "CSR",
-    link: "/csr",
-  },
+
   {
     title: "Contact",
     link: "/contact",
@@ -40,7 +37,7 @@ const navItems = [
 
 const NavItem = ({ item, key }) => {
   const { asPath } = useRouter();
-  const B = tw.a` font-semibold px-2 py-1 text-center  ${(p) =>
+  const B = tw.a` font-semibold px-2 py-1 text-center tracking-wider  ${(p) =>
     p.$light ? "text-neutral-50" : "text-neutral-900"} `;
 
   const light = asPath === "/" ? true : false;
@@ -56,7 +53,7 @@ const NavItem = ({ item, key }) => {
       <Link href={item.link} passHref>
         <B $light={light}>{item.title}</B>
       </Link>
-      <div className="absolute z-50 flex flex-col -right-4 bg-blue-primary">
+      <div className="absolute z-50 flex flex-col -right-4 bg-blue-primary/60 backdrop-blur-md">
         <Show show={show}>
           {item.sub &&
             item.sub.map((it, i) => {
@@ -82,17 +79,17 @@ const Header = ({ setOpen }) => {
       <Link href="/" passHref>
         <Image src={Logo} alt="logo" className="cursor-pointer bg-neutral-50" />
       </Link>
-      <div className="hidden space-x-3 md:flex">
+      <div className="justify-end hidden space-x-3 md:flex">
         {navItems.map((item, i) => (
           <NavItem item={item} key={i} />
         ))}
       </div>
       <div
-        className={`text-3xl cursor-pointer text-neutral-50 ${
+        className={`md:hidden text-3xl cursor-pointer text-neutral-50 ${
           light ? "text-neutral-50" : "text-neutral-900"
         }`}
       >
-        <AiOutlineMenu className="md:hidden" onClick={() => setOpen(true)} />
+        <AiOutlineMenu onClick={() => setOpen(true)} />
       </div>
     </NavContainer>
   );

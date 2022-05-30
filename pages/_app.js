@@ -19,7 +19,6 @@ function MyApp({ Component, pageProps }) {
 
       <div>
         <div className="container px-3 mx-auto md:px-0">
-          <TopHeader />
           <Header open={open} setOpen={setOpen} />
           <MobileNav open={open} setOpen={setOpen} />
         </div>

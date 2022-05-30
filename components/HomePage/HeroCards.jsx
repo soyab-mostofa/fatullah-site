@@ -3,7 +3,7 @@ import { ImMakeGroup } from "react-icons/im";
 import { SiMaterialdesign } from "react-icons/si";
 import { GrTechnology } from "react-icons/gr";
 import Image from "next/image";
-import machine from "../../public/assets/machine.png";
+import cap from "../../public/assets/cap.png";
 import { CgShapeZigzag } from "react-icons/cg";
 import { Fade } from "react-reveal";
 
@@ -56,9 +56,9 @@ const HeroCards = () => {
       </div>
       <Fade>
         <div className="my-10 md:grid md:grid-cols-2">
-          <div className="relative w-64 h-64 mx-auto">
+          <div className="relative w-full h-64 max-w-md mx-auto">
             <Image
-              src={machine}
+              src={cap}
               objectFit="cover"
               layout="fill"
               all="machine"

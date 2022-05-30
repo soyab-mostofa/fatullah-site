@@ -4,6 +4,7 @@ import { Chrono } from "react-chrono";
 import tw from "tailwind-styled-components";
 import { MdTimeline } from "react-icons/md";
 import { aboutData } from "../../lib/data";
+import { CgShapeZigzag } from "react-icons/cg";
 
 const H1 = tw.h1`text-2xl font-bold text-center md:text-left my-4`;
 const P = tw.p`text-sm my-2 leading-5`;
@@ -24,8 +25,10 @@ const about = () => {
       </div>
       {/* cover image */}
       <Container>
-        <div>
+        <div className="max-w-md mx-auto my-4">
           <H1>{aboutData.aboutUs.heading}</H1>
+          <CgShapeZigzag className="mx-auto mb-5 -mt-3 text-5xl" />
+
           {/* data */}
           <P>{aboutData.aboutUs.sub1}</P>
           <P>{aboutData.aboutUs.sub2}</P>

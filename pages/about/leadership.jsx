@@ -3,15 +3,18 @@ import React from "react";
 import { Leadership } from "../../lib/data";
 import { Container, H1, P } from "../../lib/styles";
 import leader from "../../public/assets/leadership.jpg";
+import leaderart from "../../public/assets/leadership-illustration.png";
+import { CgShapeZigzag } from "react-icons/cg";
 
 const leadership = () => {
   return (
     <div>
-      <div className="w-full relative h-[300px]">
-        <Image src={leader} objectFit="cover" layout="fill" alt="leader" />
+      <div className="max-w-md relative h-[280px] mx-auto mb-4">
+        <Image src={leaderart} objectFit="cover" layout="fill" alt="leader" />
       </div>
       <Container>
         <H1>Our Leadership</H1>
+        <CgShapeZigzag className="mx-auto mb-5 -mt-3 text-5xl" />
         <P className="mx-8">{leadership.title}</P>
         <div className="flex flex-wrap justify-center gap-4 mt-8">
           {Leadership.people.map((people, i) => {

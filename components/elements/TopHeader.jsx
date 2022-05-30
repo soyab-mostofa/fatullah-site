@@ -16,8 +16,14 @@ const TopHeader = () => {
         asPath === "/" ? "text-gray-50" : ""
       } pt-3`}
     >
-      <div className="flex gap-3 mb-3 ">
-        <FaFacebook />
+      <div className="flex gap-3 mb-3 cursor-pointer ">
+        <Link
+          href="https://www.facebook.com/fatullahgroup/"
+          passHref
+          target="_blank"
+        >
+          <FaFacebook />
+        </Link>
         <FaTwitter />
         <FaInstagram />
         <FaLinkedinIn />
