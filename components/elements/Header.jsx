@@ -74,7 +74,7 @@ const Header = ({ setOpen }) => {
   const { asPath } = useRouter();
 
   const light = asPath === "/" ? true : false;
-
+  console.log(light);
   return (
     <NavContainer>
       <Link href="/" passHref>
@@ -90,7 +90,10 @@ const Header = ({ setOpen }) => {
           light ? "text-neutral-50" : "text-neutral-900"
         }`}
       >
-        <AiOutlineMenu onClick={() => setOpen(true)} />
+        <AiOutlineMenu
+          className={`${light ? "text-neutral-50" : "text-neutral-900 "}`}
+          onClick={() => setOpen(true)}
+        />
       </div>
     </NavContainer>
   );
